@@ -6,25 +6,27 @@ function App() {
   return (
     <div>
       <div>
-        <Button primary>
+        <Button primary className="mb-5">
           <GoBell />
           Click me!
         </Button>
       </div>
       <div>
-        <Button secondary>
+        <Button secondary className="mb-5">
           <GoDatabase />
           Buy now!
         </Button>
       </div>
       <div>
-        <Button success>
+        <Button success className="mb-5">
           <GoCloudDownload />
           Hide ads!
         </Button>
       </div>
       <div>
-        <Button danger>Hide ads!</Button>
+        <Button danger className="mb-5">
+          Hide ads!
+        </Button>
       </div>
       <div>
         <Button warning>Hide ads!</Button>
