@@ -65,3 +65,12 @@
 //   -->No: Define in Accordion
 
 //As for the event handler, usually is defined in the same component where state is modified (co-location)
+
+//VARIATION OF EVENT HANDLERS
+
+//Longhand version: <div onClick={handleClick}></div>
+//the handleClick function is outside of onClock. Slightly harder to use with lists
+
+//Shorthand version: <div onClick={() => console.log("Hi")}></div>
+//the function is handled directly inside the onClick but it can make JSX harder to read if
+// we have more functions do deal with
