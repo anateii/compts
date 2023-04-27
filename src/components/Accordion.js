@@ -4,11 +4,17 @@ import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 function Accordion({ items }) {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
-  //What if we want to toggle the panels and make them closed as default start?
-  // we can put useState(-1) this way the index starts at a negative value and all
-  // the panels are closed by default.
-
   const handleClick = (nextIndex) => {
+    //console.log("STALE version of expandedIndex", expandedIndex);
+    setExpandedIndex((currentExpandedIndex) => {
+      //console.log("UPDATED version of expandedIndex", currentExpandedIndex);
+      if (currentExpandedIndex === nextIndex) {
+        return -1;
+      } else {
+        return nextIndex;
+      }
+    });
+
     if (expandedIndex === nextIndex) {
       setExpandedIndex(-1);
     } else {
@@ -37,9 +43,6 @@ function Accordion({ items }) {
       <div className="border-b p-5">{item.content}</div>
     );
 
-    //&& operator gives back the first falsey value or the last truthy value
-    //|| operator gives back the first value that is truthy
-    //React doesn't print booleans, nulls or undefined. So if isExpanded is false it won't show the div
     return (
       <div key={item.id}>
         <div

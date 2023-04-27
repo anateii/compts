@@ -29,6 +29,10 @@
 //   Types of state: ideally avoid arrays/objects because it can get too complicated.
 //   Better numbers, booleans, strings.
 
+////&& operator gives back the first falsey value or the last truthy value
+//|| operator gives back the first value that is truthy
+//React doesn't print booleans, nulls or undefined. So if isExpanded is false it won't show the div
+
 //   User committed some action --> event handler
 //    - whenever the other sections expand or collapse
 
@@ -74,3 +78,59 @@
 //Shorthand version: <div onClick={() => console.log("Hi")}></div>
 //the function is handled directly inside the onClick but it can make JSX harder to read if
 // we have more functions do deal with
+
+//TOGGLE PANELS
+
+//What if we want to toggle the panels and make them closed as default start?
+// we can put useState(-1) this way the index starts at a negative value and all
+// the panels are closed by default.
+
+//THE BUG
+
+//Click on a panel and go to inspect. You will see in html that the div for that panel
+//has a direct JavaScript reference --> $0
+
+//If I click the div twice it should close and open. But if in the console I am writin
+// $0.click(); $0.click(); the result is undefined.
+
+//But why isn't behaving correctly?
+// 1. expandedIndex === 0
+// 2. User clicks first header(index 0)
+// 3. Event handler executed
+// 4. Because expandedIndex === index we call setExpandedIndex(-1)
+// 5. React: Oh... you want to update state? let me do that in the future
+// 6. User clicks first header again (index 0)
+// 7. Event handler executed
+// 8. expandedIndex hasn't been updated yet! It's still equal to zero
+// 9. Because expandedIndex === index we call setExpandedIndex(-1)
+// 10. React: Oh you want to update state.. I'll do that later. Time passes (miliseconds)
+// 11. React: Ok I will update it expandedIndex === -1
+// 12. First panel is collapsed
+
+//OPTION 1: Get React to process state updates istantly and make it stop doing anything else
+//This will make the app run a little bit slowly so not ideal
+
+//OPTION 2: Get access to the most up to date value of expandedIndex in handleClick
+//Functional technique: Used if new value depends on old value
+
+// const [counter, setCounter] = useState(0)
+
+// const handleClick = () => {
+//  setCounter(currentCounter => {
+//    if (currentCounter > 10) {return 20}
+//        else { return currentCounter + 1}
+//  })
+// }
+
+//currentCounter is guaranteed to be the MOST UP TO THE DATE version of the counter
+// counter will beupdated to whatever the value we return from this function
+
+//    console.log("STALE version of expandedIndex", expandedIndex);
+//     setExpandedIndex((currentExpandedIndex) => {
+//       console.log("UPDATED version of expandedIndex", currentExpandedIndex);
+//       if (currentExpandedIndex === nextIndex) {
+//         return -1;
+//       } else {
+//         return nextIndex;
+//       }
+//     });
