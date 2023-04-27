@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 function Accordion({ items }) {
-  const [expandedIndex, setExpandedIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState(-1);
 
-  const handleClick = (index) => {
-    setExpandedIndex(index);
+  //What if we want to toggle the panels and make them closed as default start?
+  // we can put useState(-1) this way the index starts at a negative value and all
+  // the panels are closed by default.
+
+  const handleClick = (nextIndex) => {
+    if (expandedIndex === nextIndex) {
+      setExpandedIndex(-1);
+    } else {
+      setExpandedIndex(nextIndex);
+    }
+
+    //here we are implementing the toggle logic. If the expandedIndex is identical to the nextIndex
+    //then we set the setExpanded index to -1 so it can close the panel
   };
   //this is a callback function that receives the index available only inside the map
 
