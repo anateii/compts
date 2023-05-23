@@ -14,7 +14,7 @@
 //   In addition to your component props, what other arguments would you need?
 //8. Decide where each event handler + state will be defined
 
-//Accordion Example
+//ACCORDION EXAMPLE
 
 //1. List of what user will do:
 //   - user clicks on third section
@@ -24,7 +24,7 @@
 //   - third secion collapses
 //   - second section expands
 
-//2. User sees something on the screen change --> state
+//2. User sees something on the screen change --> State
 //    - whenever a user clicks on the section
 //   Types of state: ideally avoid arrays/objects because it can get too complicated.
 //   Better numbers, booleans, strings.
@@ -33,7 +33,7 @@
 //|| operator gives back the first value that is truthy
 //React doesn't print booleans, nulls or undefined. So if isExpanded is false it won't show the div
 
-//   User committed some action --> event handler
+//   User committed some action --> Event Handler
 //    - whenever the other sections expand or collapse
 
 //3. Group commons steps:
@@ -134,3 +134,27 @@
 //         return nextIndex;
 //       }
 //     });
+
+//DROPDOWN COMPONENT
+
+//Use the Design Process
+
+//Menu opens & closes -> State
+//  -> Name: isOpen
+//  -> Type: boolean
+//  -> Where to define it: Dropdown Component
+
+//An item can be selected-> State
+//  -> Name: selectedOption
+//  -> Type: Option object || null
+//  -> Where to define it: Parent Component
+
+//Click an option -> Event handler
+//  -> Name: handleSelect
+//  -> Type: function
+//  -> Where to define it: Parent Component
+
+//Click the dropdown  -> Event handler
+//  -> Name: handleToggleDropdown
+//  -> Type: function
+//  -> Where to define it: Dropdown Component
