@@ -23,14 +23,20 @@ function Dropdown({ options, onSelect, selected }) {
     );
   });
 
-  let content = "Select...";
-  if (selected) {
-    content = selected.label;
-  }
+  //   let content = "Select...";
+  //   if (selected) {
+  //     content = selected.label;
+  //   }
 
   return (
     <div>
-      <div onClick={handleTogleDropdown}>{content}</div>
+      <div onClick={handleTogleDropdown}>
+        {" "}
+        {/*{content}*/}
+        {selected?.label || "Select..."}
+        {/* The question mark checks if selected is null, if it is then the or operator gives
+        back the first truthy value in this case the Select string */}
+      </div>
       {isOpen && <div>{renderedOptions}</div>}
     </div>
   );
