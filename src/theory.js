@@ -165,3 +165,16 @@
 //2. Make sure the component accepts + uses the 'children' prop
 //3. Allow extra classNames to be passed in + merge them
 //4. Take extra props, pass them through to root element
+
+//EVENT CAPTURE AND BUBBLING
+
+//1. Capture Phase
+//2. Target Phase
+//3. Bubble Phase
+
+//Example:
+//1.User clicks button! Browser needs to find click event handlers to call
+//2.The browser is going to take a look at the button and ask: do you have a click
+//  event handler? If yes, I'll call it.
+//3. Go to parent of clicked element, see if it has handler, Then go to parent's parent...etc
+//   Basically going backwards the DOM tree.
