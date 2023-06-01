@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
+import Panel from "./Panel";
 
 function Dropdown({ options, onSelect, selected }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,8 @@ function Dropdown({ options, onSelect, selected }) {
 
   return (
     <div className="w-48 relative">
-      <div
-        className="flex justify-between items-center cursor-pointer border rounded p-3 shadow bg-white w-full"
+      <Panel
+        className="flex justify-between items-center cursor-pointer"
         onClick={handleTogleDropdown}
       >
         {" "}
@@ -45,12 +46,8 @@ function Dropdown({ options, onSelect, selected }) {
         <GoChevronDown className="text-lg" />
         {/* The question mark checks if selected is null, if it is then the or operator gives
         back the first truthy value in this case the Select string */}
-      </div>
-      {isOpen && (
-        <div className="absolute top-full border rounded p-3 shadow bg-white w-full">
-          {renderedOptions}
-        </div>
-      )}
+      </Panel>
+      {isOpen && <Panel className="absolute top-full">{renderedOptions}</Panel>}
     </div>
   );
 }

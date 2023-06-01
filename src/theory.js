@@ -158,3 +158,10 @@
 //  -> Name: handleToggleDropdown
 //  -> Type: function
 //  -> Where to define it: Dropdown Component
+
+//REUSABLE PRESENTATION COMPONENTS
+
+//1. Create a new component that shows a handful of JSX elements
+//2. Make sure the component accepts + uses the 'children' prop
+//3. Allow extra classNames to be passed in + merge them
+//4. Take extra props, pass them through to root element
