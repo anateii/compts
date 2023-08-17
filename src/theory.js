@@ -178,3 +178,14 @@
 //  event handler? If yes, I'll call it.
 //3. Go to parent of clicked element, see if it has handler, Then go to parent's parent...etc
 //   Basically going backwards the DOM tree.
+
+//------------------------------------------
+
+//BROWSER NAVIGATION
+
+//When you enter your url, the browser will perform a GET request by default to whatever address you type in
+//The request will be sent to a server. Many servers implement something called router, a snippet of code that
+//takes a look at your incoming request, looking for the method and the address. Depending on these 2 factors
+//it will decide what type of content to send back as a response
+
+//Standard browser behaviour: When the browser load an HTML file all existing JS variables and code is dumped
